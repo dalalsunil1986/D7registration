@@ -53,11 +53,9 @@ function registration_schema() {
 /**
  * Implements hook_uninstall().
  *
- * At uninstall time we'll notify field.module that the entity was deleted
- * so that attached fields can be cleaned up.
- *
- * @ingroup entity_example
+ * At uninstall time we'll notify that table
+ * as well as data has been cleaned up.
  */
-function entity_example_uninstall() {
+function registration_uninstall() {
     variable_del('registration_data');
 }
