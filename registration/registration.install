@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * Install for a form data entry.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function registration_schema() {
+  $schema = array();
+
+  $schema['registration_data'] = array(
+    'description' => 'The base table hold all the registration information.',
+    'fields' => array(
+	  'first_name' => array(
+		'type' => 'varchar',
+        'length' => '50',
+        'description' => 'first name entry.',       
+      ),
+	  'last_name' => array(
+		'type' => 'varchar',
+        'length' => '50',
+        'description' => 'last name entry.',       
+      ),
+	  'organization' => array(
+		'type' => 'varchar',
+        'length' => '50',
+        'description' => 'organization name entry.',       
+      ),
+	  'email_address' => array(
+		'type' => 'varchar',
+        'length' => '255',
+        'description' => 'email address entry.',       
+      ),
+	  'phone_number' => array(
+		'type' => 'varchar',
+        'length' => '255',
+        'description' => 'phone number entry.',       
+      ),
+	  'gender' => array(
+		'type' => 'varchar',
+		'length' => '10',
+        'description' => 'gender entry.',       
+      ),	  
+    ),
+  );
+
+  return $schema;
+}
+
+
+/**
+ * Implements hook_uninstall().
+ *
+ * At uninstall time we'll notify field.module that the entity was deleted
+ * so that attached fields can be cleaned up.
+ *
+ * @ingroup entity_example
+ */
+function entity_example_uninstall() {
+    variable_del('registration_data');
+}
